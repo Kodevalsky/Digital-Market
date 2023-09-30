@@ -1,14 +1,19 @@
 from django.shortcuts import render
 
-from .forms import ProductForm, RawProductForm
+from .forms import ProductForm, RawProductForm, ProductAddForm
 
-from .models import Product
+from .models import Product, Cart
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    product_list = Product.objects.all()
-    context = {"obj": product_list}
-    return render(request, "products/home.html", context)
+    if request.method == "GET":
+        product_list = Product.objects.all()
+        form = ProductAddForm()
+        context = {"obj": product_list, "form": form}
+        return render(request, "products/home.html", context)
+    if request.method == "POST":
+        #AddedProduct = Cart(owner= , item= , quantity = )
+        pass
 
 def about_view(request, *args, **kwargs):
     my_context = {

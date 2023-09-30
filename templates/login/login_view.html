@@ -6,16 +6,38 @@ Login
 
 {% block content %}
 
-{% load bootstrap5%}
-
-<form method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-      <button type="submit" class="btn btn-primary">
-        Submit
-      </button>
-    {% endbuttons %}
-  </form>
+<div class="tw-flex tw-min-h-full tw-flex-col tw-justify-center tw-px-6 lg:tw-px-8">
+    <div class="sm:tw-mx-auto sm:tw-w-full sm:tw-max-w-sm">
+      <h2 class="tw-mt-8 tw-text-center tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight tw-text-gray-900">Login to your account</h2>
+    </div>
+  
+    <div class="tw-mt-2 sm:tw-mx-auto sm:tw-w-full sm:tw-max-w-sm">
+      <form class="tw-space-y-6" action="#" method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="email" class="tw-block tw-text-sm tw-font-medium tw-leading-6 tw-text-gray-900">Email address</label>
+          <div class="tw-mt-2">
+            {{ form.username }}
+          </div>
+        </div>
+  
+        <div>
+          <div class="tw-flex tw-items-center tw-justify-between">
+            <label for="password" class="tw-block tw-text-sm tw-font-medium tw-leading-6 tw-text-gray-900">Password</label>
+            <div class="tw-text-sm">
+              <a href="#" class="tw-font-semibold tw-text-indigo-600 hover:tw-text-indigo-500">Forgot password?</a>
+            </div>
+          </div>
+          <div class="tw-mt-2">
+            {{ form.password }}
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit" class="tw-mb-14 tw-flex tw-w-full tw-justify-center tw-rounded-md tw-bg-teal-500 tw-text-white hover:tw-bg-teal-700 tw-px-3 tw-py-1.5 tw-text-sm tw-font-semibold tw-leading-6  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 {% endblock %}

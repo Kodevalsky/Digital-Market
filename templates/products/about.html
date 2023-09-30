@@ -4,16 +4,40 @@
 About
 {% endblock %}
 {% block content%}
-This is an about page
-
-{{ my_text }}, {{ my_number }}
-{{ my_list }}
-
-
-<ul>
-    {% for my_sub_item in my_list %}
-        <li>Item {{ my_sub_item }}</li>
-    {% endfor %}
-</ul>
-
+<div class="tw-py-16 tw-flex tw-bg-white">
+    <!-- Employee Photos Section (Left Side) -->
+    <div class="tw-w-1/2 tw-flex tw-flex-col tw-items-center tw-justify-center">
+      <!-- Employee Photo 1 -->
+      <div class="tw-w-64 tw-h-64 tw-rounded-lg tw-overflow-hidden tw-mb-4">
+        <img src="{% static "worker1.jpeg" %}" alt="Employee Photo 1" class="tw-w-full tw-h-full object-cover">
+      </div>
+      <!-- Employee Photo 2 -->
+      <div class="tw-w-64 tw-h-64 tw-rounded-lg tw-overflow-hidden tw-mb-4">
+        <img src="{% static "worker2.jpeg" %}" alt="Employee Photo 2" class="tw-w-full tw-h-full object-cover">
+      </div>
+      <!-- Employee Photo 3 -->
+      <div class="tw-w-64 tw-h-64 tw-rounded-lg tw-overflow-hidden tw-mb-4">
+        <img src="{% static "worker3.jpeg" %}" alt="Employee Photo 3" class="tw-w-full tw-h-full object-cover">
+      </div>
+    </div>
+  
+    <!-- About Us Section (Right Side) -->
+    <div class="tw-container tw-mx-auto tw-flex-grow tw-ml-4">
+      <h2 class="tw-text-3xl tw-font-semibold tw-text-gray-800 tw-mb-8">About Us</h2>
+      <div class="tw-max-w-3xl tw-text-gray-600">
+        <p class="tw-text-lg tw-leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac mauris at justo condimentum auctor. Nullam nec tortor neque. Nulla facilisi. Duis tincidunt, lorem quis euismod eleifend, justo orci sollicitudin justo, eget sagittis eros nisl non dui. Nullam ullamcorper odio eget magna dapibus, in mattis sapien viverra. Phasellus eu tellus id purus tristique viverra eget a ante.
+        </p>
+        <p class="tw-mt-4 tw-text-lg tw-leading-relaxed">
+          Sed eu aliquam nunc. Sed sit amet congue augue. Nunc fringilla sodales enim. Sed interdum eros at luctus. Cras vel vestibulum elit, sed dapibus dui. Sed non arcu eu lectus tincidunt auctor ut vel dolor. Maecenas volutpat urna in scelerisque bibendum. Sed nec libero et tortor elementum vehicula ac in massa.
+        </p>
+        <p class="tw-mt-3 tw-text-lg tw-leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac mauris at justo condimentum auctor. Nullam nec tortor neque. Nulla facilisi. Duis tincidunt, lorem quis euismod eleifend, justo orci sollicitudin justo, eget sagittis eros nisl non dui. Nullam ullamcorper odio eget magna dapibus, in mattis sapien viverra. Phasellus eu tellus id purus tristique viverra eget a ante.
+        </p>
+        <p class="tw-mt-4 tw-text-lg tw-leading-relaxed">
+            Sed eu aliquam nunc. Sed sit amet congue augue. Nunc fringilla sodales enim. Sed interdum eros at luctus. Cras vel vestibulum elit, sed dapibus dui. Sed non arcu eu lectus tincidunt auctor ut vel dolor. Maecenas volutpat urna in scelerisque bibendum. Sed nec libero et tortor elementum vehicula ac in massa.
+        </p>
+      </div>
+    </div>
+  </div>  
 {% endblock %}

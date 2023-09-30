@@ -59,17 +59,28 @@
 
         <form class="tw-mt-8">
           <fieldset>
-            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{form.color.label}}</legend>
-              <div class="tw-flex tw-flex-wrap tw-gap-1">
-                {% for radio in form.color %}
-                  <label for="{{ radio.id_for_label }}" class="tw-cursor-pointer">
-                  {{ radio.tag }}
-                    <span class="tw-group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
-                  </label>
-                {% endfor %}
-              </div>
+            <legend class="tw-mb-1 tw-text-sm tw-font-medium">Color</legend>
+
+            <div class="tw-flex tw-flex-wrap tw-gap-1">
+              <label for="color_tt{{ obj.id }}" class="tw-cursor-pointer">
+                <input type="radio" name="color" id="color_tt{{ obj.id }}" class="peer tw-sr-only" />
+
+                <span class="group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> Texas Tea </span>
+              </label>
+
+              <label for="color_fr{{ obj.id }}" class="tw-cursor-pointer">
+                <input type="radio" name="color" id="color_fr{{ obj.id }}" class="peer tw-sr-only" />
+
+                <span class="group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> Fiesta Red </span>
+              </label>
+
+              <label for="color_cb{{ obj.id }}" class="tw-cursor-pointer">
+                <input type="radio" name="color" id="color_cb{{ obj.id }}" class="peer tw-sr-only" />
+
+                <span class="group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> Cobalt Blue </span>
+              </label>
+            </div>
           </fieldset>
-        </form>
 
           <fieldset class="tw-mt-4">
             <legend class="tw-mb-1 tw-text-sm tw-font-medium">Size</legend>
