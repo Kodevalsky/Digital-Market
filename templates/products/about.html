@@ -1,0 +1,19 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block title%}
+About
+{% endblock %}
+{% block content%}
+This is an about page
+
+{{ my_text }}, {{ my_number }}
+{{ my_list }}
+
+
+<ul>
+    {% for my_sub_item in my_list %}
+        <li>Item {{ my_sub_item }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
