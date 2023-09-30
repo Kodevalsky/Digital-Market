@@ -1,5 +1,4 @@
-{% extends 'core/base.html'%}
-
+{% extends 'products/base.html'%}
 
 {% block title %}
 Login
@@ -7,11 +6,16 @@ Login
 
 {% block content %}
 
-<form method='POST' novalidate>
+{% load bootstrap5%}
+
+<form method="post" class="form">
     {% csrf_token %}
-    <h2>Login</h2>
-    {{form.as_p}}
-    <input type="submit", value="Login">
-</form>
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    {% endbuttons %}
+  </form>
 
 {% endblock %}
