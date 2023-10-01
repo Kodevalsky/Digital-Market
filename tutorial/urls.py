@@ -17,19 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import index, contact
-from products.views import home_view, about_view, cart_page, product_create_view
-from login.views import login_view, logout_view
+from products.views import HomeView, AboutView, CartPage, ProductView, BrowseView
+from login.views import LoginView, LogoutView, SignupView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', home_view, name='home'),
+    path('', HomeView, name='home'),
     path('admin/', admin.site.urls),
     path('contact/', contact, name='contact'),
-    path('about/', about_view, name='about'),
-    path('cart/', cart_page, name='cart'),
-    path('create/', product_create_view, name='product_create'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout')
+    path('about/', AboutView, name='about'),
+    path('cart/', CartPage, name='cart'),
+    path('login/', LoginView, name='login'),
+    path('logout/', LogoutView, name='logout'),
+    path('browse/<str:product_id>', ProductView, name='product'),
+    path('browse/', BrowseView, name='browse'),
+    path('signup/', SignupView, name='signup')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

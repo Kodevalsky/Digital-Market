@@ -1,0 +1,17 @@
+{% extends 'products/base.html' %}
+
+{% block title%}
+
+Digital Marketplace
+
+{% endblock %}
+
+{% block content %}
+
+{% for prod in obj %}
+
+{% include 'products/component.html' with  obj=prod form=form %}
+
+{% endfor %}
+
+{% endblock %}

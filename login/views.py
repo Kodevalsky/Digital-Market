@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 # Create your views here.
 
-def login_view(request):
+def LoginView(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('about')
@@ -26,7 +26,21 @@ def login_view(request):
         context = {'form': form}
         return render(request, "login/login_view.html", context)
 
-def logout_view(request):
+def LogoutView(request):
     logout(request)
-    messages.success(request, f"You have been logged out.")
+    messages.success(request, f"You have been logged.")
     return redirect('login')
+
+def SignupView(request):
+    if request.method == "GET":
+        form = RegisterForm()
+        context = {'form':form}
+        return render(request, 'login/signup_view.html', context)
+    elif request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            return redirect('browse')
+        context = {'form':form}
+        return render(request, 'login/signup_view.html', context)

@@ -17,7 +17,7 @@
         {% if obj.is_preorder == True %}
         <strong class="tw-rounded-full tw-border tw-border-blue-600 tw-bg-gray-100 tw-px-3 tw-py-0.5 tw-text-xs tw-font-medium tw-tracking-wide tw-text-blue-600"> Pre Order </strong>
         {% endif %}
-        <div class="tw-mt-8 tw-flex tw-justify-between">
+        <div class=" tw-flex tw-justify-between">
           <div class="max-w-[35ch] tw-space-y-2">
             <h1 class="tw-text-xl tw-font-bold sm:tw-text-2xl">{{ obj.title }}</h1>
 
@@ -53,59 +53,39 @@
           <div class="tw-prose tw-max-w-none">
             <p>{{ obj.description }}</p>
           </div>
-
-          <button class="tw-mt-2 tw-text-sm tw-font-medium tw-underline">Read More</button>
+          <a href="{% url 'product' product_id=obj.id %}" class="tw-mt-2 tw-text-sm tw-font-medium tw-underline">Read More</a>
         </div>
 
-        <form class="tw-mt-8">
+        <form class="tw-mt-4">
           <fieldset>
-            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{form.color.label}}</legend>
-              <div class="tw-flex tw-flex-wrap tw-gap-1">
-                {% for radio in form.color %}
-                  <label for="{{ radio.id_for_label }}" class="tw-cursor-pointer">
+            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.color.label }}</legend>
+            <div class="tw-flex tw-flex-wrap tw-gap-1">
+              {% for radio in form.color %}
+                <label class="tw-cursor-pointer">
                   {{ radio.tag }}
-                    <span class="tw-group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
-                  </label>
-                {% endfor %}
-              </div>
+                  <input type="radio" id="{{ radio.id_for_label }}" name="{{ form.color.name }}" value="{{ radio.choice_value }}" class="peer tw-sr-only">
+                  <span class="tw-group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
           </fieldset>
         </form>
 
-          <fieldset class="tw-mt-4">
-            <legend class="tw-mb-1 tw-text-sm tw-font-medium">Size</legend>
-
+        <form class="tw-mt-8">
+          <fieldset>
+            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.size.label }}</legend>
             <div class="tw-flex tw-flex-wrap tw-gap-1">
-              <label for="size_xs{{ obj.id }}" class="tw-cursor-pointer">
-                <input type="radio" name="size" id="size_xs{{ obj.id }}" class="peer tw-sr-only" />
-
-                <span class="group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> XS </span>
-              </label>
-
-              <label for="size_s{{ obj.id }}" class="tw-cursor-pointer">
-                <input type="radio" name="size" id="size_s{{ obj.id }}" class="peer tw-sr-only" />
-
-                <span class="group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> S </span>
-              </label>
-
-              <label for="size_m{{ obj.id }}" class="tw-cursor-pointer">
-                <input type="radio" name="size" id="size_m{{ obj.id }}" class="peer tw-sr-only" />
-
-                <span class="group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> M </span>
-              </label>
-
-              <label for="size_l{{ obj.id }}" class="tw-cursor-pointer">
-                <input type="radio" name="size" id="size_l{{ obj.id }}" class="peer tw-sr-only" />
-
-                <span class="group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> L </span>
-              </label>
-
-              <label for="size_xl{{ obj.id }}" class="tw-cursor-pointer">
-                <input type="radio" name="size" id="size_xl{{ obj.id }}" class="peer tw-sr-only" />
-
-                <span class="group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white"> XL </span>
-              </label>
+              {% for radio in form.size %}
+                <label class="tw-cursor-pointer">
+                  {{ radio.tag }}
+                  <input type="radio" id="{{ radio.id_for_label }}" name="{{ form.size.name }}" value="{{ radio.choice_value }}" class="peer tw-sr-only">
+                  <span class="tw-group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
+                </label>
+              {% endfor %}
             </div>
           </fieldset>
+        </form>
+        
 
           <div class="tw-mt-8 tw-flex tw-gap-4">
             <div>
@@ -114,7 +94,7 @@
               <input type="number" id="quantity" min="1" value="1" class="tw-w-12 tw-rounded tw-border-gray-200 tw-py-3 tw-text-center tw-text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:tw-m-0 [&::-webkit-inner-spin-button]:tw-appearance-none [&::-webkit-outer-spin-button]:tw-m-0 [&::-webkit-outer-spin-button]:tw-appearance-none" />
             </div>
 
-            <button type="submit" class="tw-block tw-rounded tw-bg-green-600 tw-px-5 tw-py-3 tw-text-xs tw-font-medium tw-text-white hover:tw-bg-green-500">Add to Cart</button>
+            <button type="submit" class="tw-block tw-rounded  tw-px-5 tw-py-3 tw-text-xs tw-font-medium  tw-bg-teal-500 tw-text-white hover:tw-bg-teal-700">Add to Cart</button>
           </div>
         </form>
       </div>

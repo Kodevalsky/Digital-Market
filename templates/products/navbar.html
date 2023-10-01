@@ -1,14 +1,13 @@
 <nav class="tw-px-6 tw-py-6 tw-flex tw-justify-between tw-items-center tw-border-b tw-border-gray-200">
-    <a href="/" class="tw-text-xl tw-font-semibold">Digital Marketplace</a>
+    <a href="{% url 'home' %}" class="tw-text-xl tw-font-semibold">Digital Marketplace</a>
 
     <div class="tw-space-x-6">
-        <a href="{% url 'cart' %}", class="tw-text-lg tw-font-semibold hover:tw-text-gray-500">View Cart</a>
-        <a href="{% url 'home' %}", class="tw-text-lg tw-font-semibold hover:tw-text-gray-500">Browse</a>
-
-        <a href="#", class=" tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-bg-teal-500 tw-text-white tw-rounded-xl hover:tw-bg-teal-700">Sign up</a>
+        <a href="{% url 'browse' %}", class="tw-text-lg tw-font-semibold hover:tw-text-gray-500">Browse</a>
         {% if request.user.is_authenticated %}
+        <a href="{% url 'cart' %}", class="tw-text-lg tw-font-semibold hover:tw-text-gray-500">View Cart</a>
         <a href="{% url 'logout' %}", class=" tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-bg-gray-500 tw-text-white tw-rounded-xl hover:tw-bg-gray-700">Logout</a>
         {% else %}
+        <a href="{% url 'signup' %}", class=" tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-bg-teal-500 tw-text-white tw-rounded-xl hover:tw-bg-teal-700">Sign up</a>
         <a href="{% url 'login' %}", class=" tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-bg-gray-500 tw-text-white tw-rounded-xl hover:tw-bg-gray-700">Login</a>
         {% endif %}
     </div>

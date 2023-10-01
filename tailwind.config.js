@@ -3,7 +3,8 @@ module.exports = {
   prefix: 'tw-',
   content: ["./templates/**/*.html"],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }
