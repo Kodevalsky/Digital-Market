@@ -18,7 +18,7 @@ class ProductAddForm(forms.ModelForm):
         fields = ("quantity", "attribute1", "attribute2")
     quantity = forms.IntegerField(\
         widget=forms.NumberInput(\
-            attrs={'min':"1", 'value':"1", 'class':"tw-w-12 tw-rounded tw-border-gray-200 tw-py-3 tw-text-center tw-text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:tw-m-0 [&::-webkit-inner-spin-button]:tw-appearance-none [&::-webkit-outer-spin-button]:tw-m-0 [&::-webkit-outer-spin-button]:tw-appearance-none"}))
+            attrs={'min':"1", 'value':"1", 'class':"tw-border-gray-900 tw-border-2 tw-w-12 tw-rounded tw-border-gray-200 tw-py-3 tw-text-center tw-text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:tw-m-0 [&::-webkit-inner-spin-button]:tw-appearance-none [&::-webkit-outer-spin-button]:tw-m-0 [&::-webkit-outer-spin-button]:tw-appearance-none"}))
     attribute1 = forms.ChoiceField(\
         choices=[('TT', "Texas Tea"), ('FR', "Fiesta Red"), ('CB',"Cobalt Blue")], \
             widget=forms.RadioSelect(\
