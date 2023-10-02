@@ -63,7 +63,6 @@
               {% for radio in form.color %}
                 <label class="tw-cursor-pointer">
                   {{ radio.tag }}
-                  <input type="radio" id="{{ radio.id_for_label }}" name="{{ form.color.name }}" value="{{ radio.choice_value }}" class="peer tw-sr-only">
                   <span class="tw-group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
                 </label>
               {% endfor %}
@@ -78,7 +77,6 @@
               {% for radio in form.size %}
                 <label class="tw-cursor-pointer">
                   {{ radio.tag }}
-                  <input type="radio" id="{{ radio.id_for_label }}" name="{{ form.size.name }}" value="{{ radio.choice_value }}" class="peer tw-sr-only">
                   <span class="tw-group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
                 </label>
               {% endfor %}
