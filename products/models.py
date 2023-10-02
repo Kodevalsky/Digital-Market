@@ -14,5 +14,5 @@ class CartItem(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    attribute1 = models.CharField(choices=[(1, "XS"), (2, 'S'), (3, 'M'), (4, 'L'), (5, 'XL')], max_length=64)
-    attribute2 = models.CharField(choices=[(1, "Texas Tea"), (2, "Fiesta Red"), (3,"Cobalt Blue")], max_length=64)
+    attribute1 = models.CharField(choices=[(1, "Texas Tea"), (2, "Fiesta Red"), (3,"Cobalt Blue")], max_length=64)
+    attribute2 = models.CharField(choices=[(1, "XS"), (2, 'S'), (3, 'M'), (4, 'L'), (5, 'XL')], max_length=64)
