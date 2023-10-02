@@ -58,9 +58,9 @@
 
         <form class="tw-mt-4">
           <fieldset>
-            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.color.label }}</legend>
+            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.attribute1.label }}</legend>
             <div class="tw-flex tw-flex-wrap tw-gap-1">
-              {% for radio in form.color %}
+              {% for radio in form.attribute1 %}
                 <label class="tw-cursor-pointer">
                   {{ radio.tag }}
                   <span class="tw-group tw-inline-block tw-rounded-full tw-border tw-px-3 tw-py-1 tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
@@ -72,9 +72,9 @@
 
         <form class="tw-mt-8">
           <fieldset>
-            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.size.label }}</legend>
+            <legend class="tw-mb-1 tw-text-sm tw-font-medium">{{ form.attribute2.label }}</legend>
             <div class="tw-flex tw-flex-wrap tw-gap-1">
-              {% for radio in form.size %}
+              {% for radio in form.attribute2 %}
                 <label class="tw-cursor-pointer">
                   {{ radio.tag }}
                   <span class="tw-group tw-inline-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-medium peer-checked:tw-bg-black peer-checked:tw-text-white">{{ radio.choice_label }}</span>
