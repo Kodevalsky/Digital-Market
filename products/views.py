@@ -8,10 +8,6 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def HomeView(request):
-    context={}
-    return render(request, 'products/home.html', context)
-
 def BrowseView(request, *args, **kwargs):
     if request.method == "GET":
         product_list = Product.objects.all()
@@ -21,14 +17,6 @@ def BrowseView(request, *args, **kwargs):
     if request.method == "POST":
         #AddedProduct = Cart(owner= , item= , quantity = )
         pass
-
-def AboutView(request, *args, **kwargs):
-    my_context = {
-        "my_text":"This is about us",
-        "my_number": 123,
-        "my_list":[1,2,3,4]
-    }
-    return render(request, "products/about.html", my_context)
 
 @login_required
 def CartPage(request):
