@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .forms import RawProductForm, ProductAddForm
 
-from .models import Product, Cart
+from .models import Product, CartItem
 
 from django.contrib.auth.decorators import login_required
 
