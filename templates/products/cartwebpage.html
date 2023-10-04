@@ -20,8 +20,9 @@ Cart
     </style>
       <div class="tw-h-screen tw-pt-20">
         <div class="tw-mx-auto tw-max-w-5xl tw-justify-center tw-px-6 md:tw-flex md:tw-space-x-6 xl:tw-px-0">
-            {% include "products/cart_item.html" with form=form %}
-    
+          {% for prod in UserCart %}
+            {% include "products/cart_item.html" with form=form prod=prod.item %}
+          {% endfor %}
             <script>
               function decreaseQuantity(button) {
                 const input = button.nextElementSibling;

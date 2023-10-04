@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import RawProductForm, ProductAddForm
 
@@ -33,17 +33,11 @@ def BrowseView(request, *args, **kwargs):
 
 @login_required
 def CartPage(request):
-    form = RawProductForm()
-    if request.method == "POST":
-        form = RawProductForm(request.POST)
-        if form.is_valid():
-            Product.objects.create(**form.cleaned_data)
-        else:
-            print(form.errors)
-    context = {
-        'form':form
-    }
-    return render(request, 'products/cartwebpage.html', context)
+    if request.method == "GET":
+        UserCart = CartItem.objects.filter(owner=request.user)
+        context = {'UserCart': UserCart}
+        return render(request, 'products/cartwebpage.html', context)
+
 
 def ProductView(request, product_id):
     product = get_object_or_404(Product, id=product_id)
