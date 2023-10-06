@@ -8,27 +8,41 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def BrowseView(request, *args, **kwargs):
-    if request.method == "GET":
-        product_list = Product.objects.all()
-        form = ProductAddForm(auto_id='test_%s')
-        context = {"obj": product_list, "form": form}
-        return render(request, "products/browse.html", context)
-    
+def BrowseView(request):
     if request.method == "POST":
         form = ProductAddForm(request.POST)
         if form.is_valid():
-            print('penis')
-            item = form.save(commit=False)  # Create a CartItem instance but don't save it yet
-            item.owner = request.user
-            item.item = get_object_or_404(Product, id=request.POST.get('product_id'))  # Adjust this line if needed
-            item.save()  # Save the CartItem instance to the database
-            
-            # Redirect to a success page or update the context as needed
-            return redirect('products/browse.html')  # Replace 'success_page' with the actual URL name
+            product_id = request.POST.get('product_id')
+            quantity = form.cleaned_data['quantity']
+            attribute1 = form.cleaned_data['attribute1']
+            attribute2 = form.cleaned_data['attribute2']
+            owner = request.user
+
+            # Check if a CartItem object with the same product and owner already exists
+            cart_item = CartItem.objects.filter(item_id=product_id, owner=owner).first()
+
+            if cart_item:
+                # If a CartItem object already exists, update the quantity
+                cart_item.quantity += quantity
+                cart_item.save()
+            else:
+                # If a CartItem object doesn't exist, create a new one
+                item = form.save(commit=False)
+                item.owner = owner
+                item.item = get_object_or_404(Product, id=product_id)
+                item.save()
+
+            # Redirect to the cart page
+            return redirect('cart')
 
         # Handle form validation errors here
         context = {"obj": Product.objects.all(), "form": form}
+        return render(request, "products/browse.html", context)
+
+    if request.method == "GET":
+        product_list = Product.objects.all()
+        form = ProductAddForm()
+        context = {"obj": product_list, "form": form}
         return render(request, "products/browse.html", context)
 
 @login_required
