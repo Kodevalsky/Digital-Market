@@ -49,7 +49,10 @@ def BrowseView(request):
 def CartPage(request):
     if request.method == "GET":
         UserCart = CartItem.objects.filter(owner=request.user)
-        context = {'UserCart': UserCart}
+        price = 0
+        for item in UserCart:
+            price += item.quantity * item.item.price
+        context = {'UserCart': UserCart, 'total':price}
         return render(request, 'products/cartwebpage.html', context)
 
 
