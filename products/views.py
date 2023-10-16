@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import RawProductForm, ProductAddForm
+from .forms import ProductAddForm
 
 from .models import Product, CartItem
 
@@ -61,6 +61,8 @@ def ProductView(request, product_id):
     context = {'obj' : product}
     return render(request, 'products/productview.html', context)
 
+
+@login_required
 def ProductDeleteView(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == "POST":
