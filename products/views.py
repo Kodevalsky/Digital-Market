@@ -60,3 +60,14 @@ def ProductView(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     context = {'obj' : product}
     return render(request, 'products/productview.html', context)
+
+def ProductDeleteView(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == "POST":
+        product.delete()
+    UserCart = CartItem.objects.filter(owner=request.user)
+    price = 0
+    for item in UserCart:
+        price += item.quantity * item.item.price
+    context = {'UserCart': UserCart, 'total':price}
+    return render(request, 'products/cartwebpage.html', context)

@@ -18,7 +18,7 @@
               <p class="tw-text-gray-700 tw-text-base tw-mb-2">{{ item.item.summary }}</p>
               <p class="tw-text-gray-700 tw-text-base tw-mb-2" style="margin-bottom: 1rem;">Quantity: {{ item.quantity }}</p>
               <p class="tw-text-gray-700 tw-text-base tw-mb-2" style="margin-bottom: 1rem;">Price: ${{ item.item.price }}</p>
-              <form method="POST" action="{% url 'browse' %}" class="tw-absolute tw-bottom-4 tw-left-4">
+              <form method="POST" action="{% url 'delete' product_id=item.item.id %}" class="tw-absolute tw-bottom-4 tw-left-4">
                 {% csrf_token %}
                 <button type="submit" class="tw-bg-red-500 tw-text-white tw-py-2 tw-px-4 tw-rounded hover:tw-bg-red-600">Remove from Cart</button>
               </form>
