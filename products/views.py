@@ -4,12 +4,38 @@ from .forms import ProductAddForm
 
 from .models import Product, CartItem
 
+from django.views.generic import TemplateView
+
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def BrowseView(request):
-    if request.method == "POST":
+
+from django.views import View
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import ProductAddForm
+from .models import Product, CartItem
+from django.contrib.auth.decorators import login_required
+
+class SearchView(View):
+    def get(self, request):
+        query = request.GET.get('q')
+        if query:
+            products = Product.objects.filter(title__icontains=query)
+        else:
+            products = Product.objects.all()
+        context = {'obj': products}
+        return render(request, 'products/browse.html', context)
+
+
+class BrowseView(View):
+    def get(self, request):
+        product_list = Product.objects.all()
+        form = ProductAddForm()
+        context = {"obj": product_list, "form": form}
+        return render(request, "products/browse.html", context)
+    
+    def post(self, request):
         form = ProductAddForm(request.POST)
         if form.is_valid():
             product_id = request.POST.get('product_id')
@@ -36,12 +62,7 @@ def BrowseView(request):
             return redirect('cart')
 
         # Handle form validation errors here
-        context = {"obj": Product.objects.all(), "form": form}
-        return render(request, "products/browse.html", context)
-
-    if request.method == "GET":
         product_list = Product.objects.all()
-        form = ProductAddForm()
         context = {"obj": product_list, "form": form}
         return render(request, "products/browse.html", context)
 

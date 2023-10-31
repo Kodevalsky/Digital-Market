@@ -1,7 +1,7 @@
 <nav class="tw-px-6 tw-py-6 tw-flex tw-justify-between tw-items-center tw-border-b tw-border-gray-200">
     <a href="{% url 'home' %}" class="tw-text-xl tw-font-semibold">Digital Marketplace</a>
   
-    <form class="tw-flex tw-1/2 tw-justify-center" method="GET" action="{% url 'browse' %}">
+    <form class="tw-flex tw-1/2 tw-justify-center" method="GET" action="{% url 'search' %}">
       <input class="tw-border tw-border-gray-400 tw-rounded-l tw-py-2 tw-px-4 tw-w-full" type="text" name="q" placeholder="Search...">
       <button class="tw-bg-teal-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-r hover:tw-bg-teal-700" type="submit">Search</button>
     </form>

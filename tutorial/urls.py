@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import HomeView, AboutView, ContactView
-from products.views import CartPage, ProductView, BrowseView, ProductDeleteView
+from products.views import CartPage, ProductView, BrowseView, ProductDeleteView, SearchView
 from login.views import LoginView, LogoutView, SignupView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', HomeView, name='home'),
@@ -30,9 +31,10 @@ urlpatterns = [
     path('login/', LoginView, name='login'),
     path('logout/', LogoutView, name='logout'),
     path('browse/<str:product_id>', ProductView, name='product'),
-    path('browse/', BrowseView, name='browse'),
+    path('browse/', login_required(BrowseView.as_view()), name='browse'),
     path('signup/', SignupView, name='signup'),
-    path('cart/delete/<str:product_id>', ProductDeleteView, name='delete')
+    path('cart/delete/<str:product_id>', ProductDeleteView, name='delete'),
+    path('search/', SearchView.as_view(), name='search')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

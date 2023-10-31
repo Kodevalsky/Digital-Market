@@ -32,7 +32,8 @@
         <a href="{% url 'browse' %}" class="tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-rounded hover:tw-bg-blue-600">Checkout</a>
       </div>
     {% else %}
-      <p>Your cart is empty.</p>
+      <p class="tw-text-center tw-font-bold tw-from-neutral-950 tw-text-6xl tw-mt-56">Your cart is empty.</p>
+      <p class="tw-text-center tw-font-bold tw-from-neutral-950 tw-text-6xl tw-mt-10">But you can <i><a href={% url 'browse' %}>change that</a></i> right now...</p>
     {% endif %}
   </div>
 {% endblock %}
