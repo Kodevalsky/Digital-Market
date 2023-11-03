@@ -8,6 +8,74 @@ Digital Marketplace
 
 {% block content %}
 
-{% include 'login/signup_content.html' with form=form %}
+<div class="tw-flex tw-justify-center">
+    <div class="tw-flex tw-items-center tw-w-full tw-max-w-3xl tw-p-8 tw-mx-auto lg:tw-px-12">
+        <div class="tw-w-full">
+            <h1 class="tw-text-2xl tw-font-semibold tw-tracking-wider tw-capitalize ">
+                Get your free account now.
+            </h1>
+
+            <p class="tw-mt-4">
+                Let’s get you all set up so you can verify your personal account and begin setting up your profile.
+            </p>
+
+            <form class="tw-grid tw-grid-cols-1 tw-gap-6 tw-mt-8 md:tw-grid-cols-2" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">First Name</label>
+                    {{ form.first_name }}
+                </div>
+
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">Last name</label>
+                    {{ form.last_name }}
+                </div>
+
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">Email address</label>
+                    {{ form.email }}
+                </div>
+
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">Password</label>
+                    {{ form.password1}}
+                </div>
+
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">Confirm password</label>
+                    {{ form.password2 }}
+                </div>
+
+                <div>
+                    <label class="tw-block tw-mb-2 tw-text-sm ">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <button type='submit'
+                    class="tw-flex tw-items-center tw-justify-between tw-w-full tw-px-6 tw-py-3 tw-text-sm tw-tracking-wide tw-text-white tw-capitalize tw-transition-colors tw-duration-300 tw-transform tw-bg-blue-500 tw-rounded-md hover:tw-bg-blue-400 focus:tw-outline-none focus:tw-ring focus:tw-ring-blue-300 focus:tw-ring-opacity-50">
+                    <span>Sign Up </span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-w-5 tw-h-5 rtl:tw--scale-x-100" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+<div class="tw-mt-20 tw-flex tw-min-h-full tw-flex-col tw-justify-center tw-px-6 lg:tw-px-8">
+    <div class="tw-mx-auto tw-w-full tw-max-w-md">
+        {% for message in messages %}
+            <div class="tw-bg-red-500 tw-text-white tw-py-2 tw-px-3 tw-rounded tw-mb-4 tw-w-1/2 tw-mx-auto tw-text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}

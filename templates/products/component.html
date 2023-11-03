@@ -4,12 +4,12 @@
   <div class="tw-relative tw-mx-auto tw-max-w-screen-xl tw-px-4 tw-py-8">
     <div class="tw-grid tw-grid-cols-1 tw-items-start tw-gap-8 md:tw-grid-cols-2">
       <div class="tw-grid tw-grid-cols-2 tw-gap-4 md:tw-grid-cols-1">
-        <img alt="Les Paul" src="{% static obj.photo_name %}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
+        <img alt="{{ obj.title }}" src="{{ obj.photo1.url }}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
 
         <div class="tw-grid tw-grid-cols-2 tw-gap-4 lg:tw-mt-4">
-          <img alt="Les Paul" src="{% static obj.photo_name %}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
-
-          <img alt="Les Paul" src="{% static obj.photo_name %}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
+          <img alt="{{ obj.title }}" src="{{ obj.photo2.url }}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
+          
+          <img alt="{{ obj.title }}" src="{{ obj.photo3.url }}" class="aspect-square tw-w-full tw-rounded-xl tw-object-cover" />
         </div>
       </div>
 

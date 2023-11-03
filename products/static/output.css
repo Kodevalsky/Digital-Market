@@ -728,20 +728,16 @@ video {
   margin-top: 1.25rem;
 }
 
+.tw-mt-56 {
+  margin-top: 14rem;
+}
+
 .tw-mt-6 {
   margin-top: 1.5rem;
 }
 
 .tw-mt-8 {
   margin-top: 2rem;
-}
-
-.tw-mt-9 {
-  margin-top: 2.25rem;
-}
-
-.tw-mt-56 {
-  margin-top: 14rem;
 }
 
 .tw-block {
@@ -1209,6 +1205,10 @@ video {
   padding-top: 5rem;
 }
 
+.tw-pt-16 {
+  padding-top: 4rem;
+}
+
 .tw-text-center {
   text-align: center;
 }
@@ -1228,8 +1228,8 @@ video {
   line-height: 2.5rem;
 }
 
-.tw-text-9xl {
-  font-size: 8rem;
+.tw-text-6xl {
+  font-size: 3.75rem;
   line-height: 1;
 }
 
@@ -1256,11 +1256,6 @@ video {
 .tw-text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.tw-text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 
 .tw-font-bold {
@@ -1400,6 +1395,12 @@ video {
 .tw-shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.tw-shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

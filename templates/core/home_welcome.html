@@ -14,21 +14,46 @@
         <dl class="tw-mt-16 tw-grid tw-grid-cols-1 tw-gap-8 sm:tw-mt-20 sm:tw-grid-cols-2 lg:tw-grid-cols-4">
           <div class="tw-flex tw-flex-col-reverse">
             <dt class="tw-text-base tw-leading-7 ">Shops worldwide</dt>
-            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight">70+</dd>
+            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight"><span class="shop-count">0</span>+</dd>
           </div>
           <div class="tw-flex tw-flex-col-reverse">
             <dt class="tw-text-base tw-leading-7 ">Workers employed</dt>
-            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight">300+</dd>
+            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight"><span class="worker-count">0</span>+</dd>
           </div>
           <div class="tw-flex tw-flex-col-reverse">
             <dt class="tw-text-base tw-leading-7 ">Hours per week</dt>
-            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight">40</dd>
+            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight"><span class="hours-count">0</span></dd>
           </div>
           <div class="tw-flex tw-flex-col-reverse">
             <dt class="tw-text-base tw-leading-7 ">Paid time off</dt>
-            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight">Unlimited</dd>
+            <dd class="tw-text-2xl tw-font-bold tw-leading-9 tw-tracking-tight"><span class="pto-count">0</span></dd>
           </div>
         </dl>
       </div>
     </div>
   </div>
+
+<script>
+  const shopCount = document.querySelector('.shop-count');
+  const workerCount = document.querySelector('.worker-count');
+  const hoursCount = document.querySelector('.hours-count');
+  const ptoCount = document.querySelector('.pto-count');
+
+  const animateValue = (element, start, end, duration) => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      element.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
+  animateValue(shopCount, 0, 70, 2000);
+  animateValue(workerCount, 0, 300, 2000);
+  animateValue(hoursCount, 0, 40, 2000);
+  animateValue(ptoCount, 0, 999, 2000);
+</script>

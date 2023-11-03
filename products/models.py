@@ -8,7 +8,9 @@ class Product(models.Model):
     price = models.DecimalField("", max_digits=5, decimal_places=2)
     summary = models.TextField(max_length=75, blank=False)
     is_preorder = models.BooleanField(default=False)
-    photo_name = models.TextField(null=False, default="placeholder")
+    photo1 = models.ImageField(upload_to='images/', default='images/default.jpg')
+    photo2 = models.ImageField(upload_to='images/', default='images/default.jpg')
+    photo3 = models.ImageField(upload_to='images/', default='images/default.jpg')
 
 class CartItem(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

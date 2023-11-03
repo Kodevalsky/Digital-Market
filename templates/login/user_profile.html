@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="tw-container tw-mx-auto tw-px-4 tw-pt-16">
+    <div class="tw-flex tw-items-start tw-justify-between">
+        <div class="tw-w-full tw-md:w-8/12 tw-lg:w-8/12 tw-xl:w-8/12">
+            <div class="tw-rounded-lg tw-bg-white tw-overflow-hidden tw-shadow-lg">
+                <div class="tw-px-6 tw-py-4">
+                    <div class="tw-font-bold tw-text-xl tw-mb-2">{{ user.username }}'s Profile</div>
+                    <p class="tw-text-gray-700 tw-text-base">
+                        Email: {{ user.email }}
+                    </p>
+                    <p class="tw-text-gray-700 tw-text-base">
+                        Date joined: {{ user.date_joined }}
+                    </p>
+                    <p class="tw-text-gray-700 tw-text-base">
+                        First Name: {{ user.first_name }}
+                    </p>
+                    <p class="tw-text-gray-700 tw-text-base">
+                        Last Name: {{ user.last_name }}
+                    </p>
+                </div>
+            </div>
+            <div class="tw-rounded-lg tw-bg-white tw-overflow-hidden tw-shadow-lg tw-mt-6">
+                <div class="tw-px-6 tw-py-4">
+                    <div class="tw-font-bold tw-text-xl tw-mb-2">Update Profile</div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        <button type="submit" class="tw-mt-3 tw-bg-blue-500 tw-hover:bg-blue-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded">
+                            Update
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from core.views import HomeView, AboutView, ContactView
 from products.views import CartPage, ProductView, BrowseView, ProductDeleteView, SearchView
-from login.views import LoginView, LogoutView, SignupView
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from login.views import LoginView, LogoutView, SignupView, ProfileView
 from django.contrib.auth.decorators import login_required
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('', HomeView, name='home'),
@@ -28,13 +30,12 @@ urlpatterns = [
     path('contact/', ContactView, name='contact'),
     path('about/', AboutView, name='about'),
     path('cart/', CartPage, name='cart'),
-    path('login/', LoginView, name='login'),
+    path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView, name='logout'),
     path('browse/<str:product_id>', ProductView, name='product'),
     path('browse/', login_required(BrowseView.as_view()), name='browse'),
-    path('signup/', SignupView, name='signup'),
+    path('signup/', SignupView.as_view(), name='signup'),
     path('cart/delete/<str:product_id>', ProductDeleteView, name='delete'),
-    path('search/', SearchView.as_view(), name='search')
-]
-
-urlpatterns += staticfiles_urlpatterns()
+    path('search/', login_required(SearchView.as_view()), name='search'),
+    path('profile/', ProfileView.as_view(), name='user_profile')
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 

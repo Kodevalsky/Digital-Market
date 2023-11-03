@@ -101,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -120,8 +121,9 @@ USE_TZ = True
 STATIC_ROOT = Path(__file__).resolve().parent.parent.joinpath(Path("static/"))
 STATICFILES_DIRS = [Path(__file__).resolve().parent.parent.joinpath(Path("products/static"))]
 STATIC_URL = 'static/'
+
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
